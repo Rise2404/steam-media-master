@@ -174,6 +174,19 @@ document.getElementById('crop-btn').addEventListener('click', async () => {
   });
 });
 
+// Templates download — open Drive view page via Telegram (avoids ERR_BLOCKED_BY_RESPONSE)
+const TEMPLATES_URL = 'https://drive.google.com/file/d/1K-Wvb_dMwWBU5k7zvymNmM7evCXkSexx/view?usp=sharing';
+const dlBtn = document.getElementById('download-templates');
+if (dlBtn) {
+  dlBtn.addEventListener('click', () => {
+    if (tg) {
+      tg.openLink(TEMPLATES_URL);
+    } else {
+      window.open(TEMPLATES_URL, '_blank');
+    }
+  });
+}
+
 const templateGrid = document.getElementById('template-grid');
 if (templateGrid) {
   templateGrid.innerHTML = '';
